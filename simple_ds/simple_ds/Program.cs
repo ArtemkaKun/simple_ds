@@ -6,7 +6,13 @@ namespace simple_ds
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Structures.Stack<int> stack = new Structures.Stack<int>();
+
+            Console.WriteLine(stack.isEmpty());
+            stack.Push(1);
+            stack.Push(2);
+            Console.WriteLine(stack.Peek());
+            Console.WriteLine(stack.Pop());
         }
     }
 }
