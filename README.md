@@ -12,8 +12,9 @@ List of data structures in this project:
 8) Hash tables (TODO)
 
 Stack
+
 For stack I used List type from System.Collections.Generic.
-What stack class can do?
+What Stack class can do?
 1) int Size() - return size of a stack
 2) bool isEmpty() - check if stack is empty
 3) T Peek() - return top element of a stack without remowing it
