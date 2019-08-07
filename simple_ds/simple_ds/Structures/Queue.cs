@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace simple_ds.Structures
 {
-    class Queue<T>
+    public class Queue<T>
     {
         private int size_of_queue;
         private readonly List<T> queue_data;
@@ -78,6 +78,75 @@ namespace simple_ds.Structures
             }
 
             return clone_queue;
+        }
+
+        //sort values in this queue (bubble sort) TODO
+        public void Sort()
+        {
+            for (var step_by_each_symbol = size_of_queue - 1; step_by_each_symbol > 0; --step_by_each_symbol)
+            {
+                for (var one_symbol = 0; one_symbol < step_by_each_symbol; ++one_symbol)
+                {
+
+                    if (Convert.ToInt32(queue_data[one_symbol]) > Convert.ToInt32(queue_data[one_symbol + 1]))
+                    {
+                        T buffer;
+
+                        buffer = queue_data[one_symbol + 1];
+                        queue_data[one_symbol + 1] = queue_data[one_symbol];
+                        queue_data[one_symbol] = buffer;
+                    }
+                }
+            }
+        }
+
+        //reverse values position in the queue
+        public Queue<T> Reverse()
+        {
+            Queue<T> reversed_queue = new Queue<T>();
+            Queue<T> buffer_queue = new Queue<T>();
+            Stack<T> buffer_stack = new Stack<T>();
+
+            buffer_queue = this.Copy();
+
+            while (!buffer_queue.isEmpty())
+            {
+                buffer_stack.Push(buffer_queue.Dequeue());
+            }
+
+            while (!buffer_stack.isEmpty())
+            {
+                reversed_queue.Enqueue(buffer_stack.Pop());
+            }
+
+            return reversed_queue;
+        }
+
+        //reverse first n item in a queue
+        public Queue<T> Reverse(int n)
+        {
+            Queue<T> reversed_queue = new Queue<T>();
+            Queue<T> buffer_queue = new Queue<T>();
+            Stack<T> buffer_stack = new Stack<T>();
+
+            buffer_queue = this.Copy();
+
+            for (var item = 0; item < n; ++item)
+            {
+                buffer_stack.Push(buffer_queue.Dequeue());
+            }
+
+            while (!buffer_stack.isEmpty())
+            {
+                reversed_queue.Enqueue(buffer_stack.Pop());
+            }
+
+            while (!buffer_queue.isEmpty())
+            {
+                reversed_queue.Enqueue(buffer_queue.Dequeue());
+            }
+
+            return reversed_queue;
         }
     }
 }

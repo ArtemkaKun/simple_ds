@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace simple_ds.Structures
 {
-    class Stack<T>
+    public class Stack<T>
     {
         private int size_of_stack;
         private readonly List<T> stack_data;
