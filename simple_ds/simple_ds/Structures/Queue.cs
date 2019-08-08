@@ -65,6 +65,7 @@ namespace simple_ds.Structures
         public void Clear()
         {
             queue_data.Clear();
+            size_of_queue = 0;
         }
 
         //return a deep clone object
@@ -101,7 +102,7 @@ namespace simple_ds.Structures
         }
 
         //reverse values position in the queue
-        public Queue<T> Reverse()
+        public void Reverse()
         {
             Queue<T> reversed_queue = new Queue<T>();
             Queue<T> buffer_queue = new Queue<T>();
@@ -114,16 +115,16 @@ namespace simple_ds.Structures
                 buffer_stack.Push(buffer_queue.Dequeue());
             }
 
+            this.Clear();
             while (!buffer_stack.isEmpty())
             {
-                reversed_queue.Enqueue(buffer_stack.Pop());
+                this.Enqueue(buffer_stack.Pop());
             }
 
-            return reversed_queue;
         }
 
         //reverse first n item in a queue
-        public Queue<T> Reverse(int n)
+        public void Reverse(int n)
         {
             Queue<T> reversed_queue = new Queue<T>();
             Queue<T> buffer_queue = new Queue<T>();
@@ -136,17 +137,16 @@ namespace simple_ds.Structures
                 buffer_stack.Push(buffer_queue.Dequeue());
             }
 
+            this.Clear();
             while (!buffer_stack.isEmpty())
             {
-                reversed_queue.Enqueue(buffer_stack.Pop());
+                this.Enqueue(buffer_stack.Pop());
             }
 
             while (!buffer_queue.isEmpty())
             {
-                reversed_queue.Enqueue(buffer_queue.Dequeue());
+                this.Enqueue(buffer_queue.Dequeue());
             }
-
-            return reversed_queue;
         }
     }
 }
