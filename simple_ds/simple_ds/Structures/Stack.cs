@@ -70,20 +70,19 @@ namespace simple_ds.Structures
             }
         }
 
-        //return stack with reversed elements order in a stack (turn a stack into a queue)
-        public Stack<T> Reverse()
+        // reverse the caller stack (turn a stack into a queue)
+        public void Reverse()
         {
-            Stack<T> reversed_stack = new Stack<T>();
             Stack<T> buffer_stack = new Stack<T>();
 
             buffer_stack = this.Copy();
 
+            this.Clear();
             while (!buffer_stack.isEmpty())
             {
-                reversed_stack.Push(buffer_stack.Pop());
+                this.Push(buffer_stack.Pop());
             }
 
-            return reversed_stack;
         }
 
         //return a deep copy of a stack
@@ -117,6 +116,13 @@ namespace simple_ds.Structures
                     }
                 }
             }
+        }
+
+        //clear stack
+        public void Clear()
+        {
+            stack_data.Clear();
+            size_of_stack = 0;
         }
     }
 }
