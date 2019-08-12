@@ -5,12 +5,13 @@ Hello, my name is Artem. I decide to create my own implementataion of data staru
 List of data structures in this project:
 1) Stack
 2) Queue
-3) Double queue (TODO)
-4) Linked lists (TODO)
-5) Graphs (TODO)
-6) Trees (TODO)
-7) Prefix trees (TODO)
-8) Hash tables (TODO)
+3) Linked list (TODO)
+4) Double linked list (TODO)
+5) Double queue (TODO)
+6) Graphs (TODO)
+7) Trees (TODO)
+8) Prefix trees (TODO)
+9) Hash tables (TODO)
 
 Stack
 
