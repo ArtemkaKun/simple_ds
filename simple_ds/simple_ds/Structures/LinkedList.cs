@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace simple_ds.Structures
 {
-    class LinkedList <T>
+    public class LinkedList<T>
     {
         private int size_of_list;
         private readonly List<Node<T>> list_data;
@@ -17,22 +17,54 @@ namespace simple_ds.Structures
             head = null;
         }
 
+        public T PeekHead()
+        {
+            return head.Data();           
+        }
+
         public T RemoveHead()
         {
-            var value = head.Data();
-            head = head.getNext();
-            return value;
+            if (!isEmpty())
+            {
+                var value = head.Data();
+                head = head.getNext();
+                --size_of_list;
+                return value;
+            }
+            else
+            {
+                throw new Exception("Cannot remove head. List is empty!");
+            }
         }
 
         public T GetElement(int id)
         {
             var item = head;
-            for (var elem = 0; elem < id; ++elem)
+            for (var elem = 0; elem < id - 1; ++elem)
             {
                 item = item.getNext();
             }
 
             return item.Data();
+        }
+
+        public T RemoveElement(int id)
+        {
+            var item = head;
+            var previous_item = head;
+
+            for (var elem = 0; elem < id - 1; ++elem)
+            {
+                previous_item = item;
+                item = item.getNext();
+            }
+
+            previous_item.setNext(item.getNext());
+            var value = item.Data();
+            item.setNext(null);
+            --size_of_list;
+
+            return value;
         }
 
         public void PushBack(T item)
@@ -84,12 +116,6 @@ namespace simple_ds.Structures
             tail = null;
         }
 
-        //this method return head element
-        public Node<T> Head()
-        {
-            return head;
-        }
-
         public void Sort()
         {
             for (var step_by_each_node = size_of_list - 1; step_by_each_node > 0; --step_by_each_node)
@@ -130,7 +156,7 @@ namespace simple_ds.Structures
             this.Clear();
             while (!buffer_list.isEmpty())
             {
-                this.PushBack(buffer_list.Pop());
+                this.PushStart(buffer_list.RemoveHead());
             }
         }
     }
