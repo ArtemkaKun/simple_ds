@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace simple_ds.Structures
 {
-    class DoubleLinkedList<T>
+    public class DoubleLinkedList<T>
     {
         private int size_of_list;
         private readonly List<DoubleNode<T>> list_data;
