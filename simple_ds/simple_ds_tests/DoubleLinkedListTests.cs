@@ -3,7 +3,7 @@
 namespace simple_ds_tests
 {
     [TestClass]
-    class DoubleLinkedListTests
+    public class DoubleLinkedListTests
     {
         [TestMethod]
         //this method test PeekHead() function
@@ -77,6 +77,106 @@ namespace simple_ds_tests
             }
 
             list_buffer = list.GetElementFromBack(2);
+
+            Assert.AreEqual(expected, list_buffer);
+        }
+
+        [TestMethod]
+        //this method test RemoveHead() function
+        public void PushBack23_2returned()
+        {
+            int expected = 2;
+            int list_buffer;
+
+            simple_ds.Structures.DoubleLinkedList<int> list = new simple_ds.Structures.DoubleLinkedList<int>();
+
+            for (var number = 2; number <= 3; ++number)
+            {
+                list.PushBack(number);
+            }
+
+            list_buffer = list.RemoveHead();
+
+            Assert.AreEqual(expected, list_buffer);
+        }
+
+        [TestMethod]
+        //this method test RemoveTail() function
+        public void PushBack23_3returned()
+        {
+            int expected = 3;
+            int list_buffer;
+
+            simple_ds.Structures.DoubleLinkedList<int> list = new simple_ds.Structures.DoubleLinkedList<int>();
+
+            for (var number = 2; number <= 3; ++number)
+            {
+                list.PushBack(number);
+            }
+
+            list_buffer = list.RemoveTail();
+
+            Assert.AreEqual(expected, list_buffer);
+        }
+
+        [TestMethod]
+        //this method test RemoveElementFromStart() function
+        public void PushBack12345_3returned()
+        {
+            int expected = 3;
+            int list_buffer;
+
+            simple_ds.Structures.DoubleLinkedList<int> list = new simple_ds.Structures.DoubleLinkedList<int>();
+
+            for (var number = 1; number <= 5; ++number)
+            {
+                list.PushBack(number);
+            }
+
+            list_buffer = list.RemoveElementFromStart(3);
+
+            Assert.AreEqual(expected, list_buffer);
+        }
+
+        [TestMethod]
+        //this method test RemoveElementFromBack() function
+        public void PushBack12345_4returned()
+        {
+            int expected = 4;
+            int list_buffer;
+
+            simple_ds.Structures.DoubleLinkedList<int> list = new simple_ds.Structures.DoubleLinkedList<int>();
+
+            for (var number = 1; number <= 5; ++number)
+            {
+                list.PushBack(number);
+            }
+
+            list_buffer = list.RemoveElementFromBack(2);
+
+            Assert.AreEqual(expected, list_buffer);
+        }
+
+        [TestMethod]
+        //this method test Reverse() function
+        public void PushBack12345_54321returned()
+        {
+            string expected = "54321";
+            string list_buffer = "";
+
+            simple_ds.Structures.DoubleLinkedList<int> list = new simple_ds.Structures.DoubleLinkedList<int>();
+
+            for (var number = 1; number <= 5; ++number)
+            {
+                list.PushBack(number);
+            }
+
+            list.Reverse();
+
+            while (!list.isEmpty())
+            {
+                list_buffer += list.RemoveHead();
+            }
 
             Assert.AreEqual(expected, list_buffer);
         }

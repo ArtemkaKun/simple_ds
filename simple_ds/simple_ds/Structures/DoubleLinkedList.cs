@@ -62,16 +62,18 @@ namespace simple_ds.Structures
 
         public void PushBack(T item)
         {
-            ++size_of_list;
+            
             if (head == null)
             {
                 list_data.Add(new DoubleNode<T>(item, null, null));
+                ++size_of_list;
                 head = list_data[0];
                 tail = list_data[0];
             }
             else
             {
                 list_data.Add(new DoubleNode<T>(item, null, list_data[size_of_list - 1]));
+                ++size_of_list;
                 tail.set_next_node(list_data[size_of_list - 1]);
                 tail = list_data[size_of_list - 1];
             }
