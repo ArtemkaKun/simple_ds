@@ -12,6 +12,8 @@ List of data structures in this project:
 7) Prefix trees (TODO)
 8) Hash tables (TODO)
 
+[Wiki](https://github.com/ArtemkaKun/simple_ds/wiki)
+
 Stack
 
 For stack, I used List type from System.Collections.Generic.
